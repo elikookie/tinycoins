@@ -2,3 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
+.rounded-xxl{
+    border-radius: 2rem;
+}
