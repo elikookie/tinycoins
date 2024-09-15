@@ -1,6 +1,7 @@
 import Card from "./components/card";
 import Input from "./components/input";
 import Button from "./components/button";
+import { signIn, signInWithGoogle } from "./components/auth"
 
 export default function Login() {
   return (
@@ -12,7 +13,7 @@ export default function Login() {
         <Input type="password" placeholder="Password"></Input>
         <br />
         <br />
-        <Button>Login</Button>
+        <Button onClick={signIn}>Login</Button>
       </Card>
     </main>
   );
