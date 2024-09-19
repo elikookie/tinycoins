@@ -1,22 +1,32 @@
 "use client";
-import { useState } from "react";
-import { useRouter } from "next/navigation";
-import Card from "../components/card";
-import Input from "../components/input";
-import Button from "../components/button";
-import { signIn, signInWithGoogle } from "../components/auth";
 
-export default function Login() {
+import { useState } from "react";
+import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
+import { auth } from "../firebase/config";
+import { useRouter } from "next/navigation";
+
+import Card from "../components/card";
+import Button from "../components/button";
+import Input from "../components/input";
+
+export default function Signup() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const router = useRouter();
 
-  const handleLogin = async () => {
+  const [createUserWithEmailAndPassword] =
+    useCreateUserWithEmailAndPassword(auth);
+
+  const handleSignUp = async () => {
     try {
-      const user = await signIn(email, password);
-      router.push(`/${user.uid}/board`);
-    } catch (error) {
-      console.error("Login failed:", error);
+      const res = await createUserWithEmailAndPassword(email, password);
+      console.log({ res });
+      sessionStorage.setItem("user", true);
+      router.push("/");
+      setEmail("");
+      setPassword("");
+    } catch (e) {
+      console.error(e);
     }
   };
 
@@ -38,9 +48,9 @@ export default function Login() {
         />
         <br />
         <br />
-        <Button onClick={handleLogin}>Login</Button>
+        <Button onClick={handleSignUp}>Signup</Button>
         <br></br>
-        <Button onClick={signInWithGoogle}>Login with Google</Button>
+        <Button>Signup with Google</Button>
       </Card>
     </main>
   );

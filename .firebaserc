@@ -1,9 +1,0 @@
-{
-  "projects": {
-    "default": "tinycoins-a3ceb",
-    "tinycoins": "tinycoins-a3ceb"
-  },
-  "targets": {},
-  "etags": {},
-  "dataconnectEmulatorConfig": {}
-}

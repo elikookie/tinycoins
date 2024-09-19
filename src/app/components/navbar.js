@@ -9,10 +9,6 @@ const NavBar = () => {
   return (
     <nav className="fixed top-0 w-full bg-fuchsia-50 z-10">
       <div className="flex justify-between items-center w-full p-4 ">
-        {/* Menu */}
-        <button className="text-gray-600 focus:outline-none">
-          <FaBars size={24} />
-        </button>
 
         {/* Search bar */}
         <div className="flex-grow mx-4 relative">
@@ -25,7 +21,7 @@ const NavBar = () => {
         </div>
 
         {/* User */}
-        <button onClick={() => router.push("/login")} className="text-gray-600">
+        <button onClick={() => router.push("/signin")} className="text-gray-600">
           <FaUserCircle size={24} />
         </button>
       </div>
