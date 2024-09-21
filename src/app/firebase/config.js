@@ -1,5 +1,6 @@
 import {initializeApp, getApp, getApps} from "firebase/app";
 import {getAuth} from "firebase/auth";
+import { getFirestore } from "firebase/firestore";
 import "firebase/firestore";
 
 const firebaseConfig = {
@@ -14,5 +15,15 @@ const firebaseConfig = {
 const app = !getApps().length ? initializeApp(firebaseConfig) : getApp()
 
 const auth = getAuth(app)
+const db = getFirestore(app);
 
-export {app, auth}
+export async function addUser(userId, userData) {
+  try {
+    await setDoc(doc(db, "users", userId), userData);
+    console.log("User data added successfully!");
+  } catch (e) {
+    console.error("Error adding user data: ", e);
+  }
+}
+
+export {app, auth, db}

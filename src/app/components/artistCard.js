@@ -8,7 +8,7 @@ export default function ArtistCard({ usernameId, className = "" }) {
         <div className="flex justify-center items-center">
           <img src="/van.jpg" className="w-16 h-16 rounded-full" />
         </div>
-        <h1>Artist Name</h1>
+        <h1>{usernameId}</h1>
         <p>Links</p>
         <p>Links</p>
         <p>Links</p>
